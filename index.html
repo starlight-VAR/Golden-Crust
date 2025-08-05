@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Crust Artisan Bakery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fff9f5;
+            color: #5a4a42;
+        }
+        .handwritten {
+            font-family: 'Dancing Script', cursive;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .order-btn {
+            background-color: #e8b4a0;
+            transition: all 0.3s ease;
+        }
+        .order-btn:hover {
+            background-color: #d49a83;
+            transform: scale(1.05);
+        }
+        .floating-order-btn {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .nav-link:hover {
+            color: #e8b4a0;
+        }
+        .filter-btn.active {
+            background-color: #e8b4a0;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-bread-slice text-3xl text-amber-700 mr-2"></i>
+                <h1 class="handwritten text-3xl font-bold text-amber-800">Golden Crust</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="nav-link font-medium">Home</a>
+                <a href="#products" class="nav-link font-medium">Our Bakes</a>
+                <a href="#about" class="nav-link font-medium">Our Story</a>
+                <a href="#contact" class="nav-link font-medium">Contact</a>
+            </nav>
+            <button id="mobileMenuBtn" class="md:hidden text-amber-800 text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div id="mobileMenu" class="hidden absolute top-16 right-4 bg-white shadow-lg rounded-lg p-4 w-48">
+                <a href="#" class="block py-2 hover:text-amber-600">Home</a>
+                <a href="#products" class="block py-2 hover:text-amber-600">Our Bakes</a>
+                <a href="#about" class="block py-2 hover:text-amber-600">Our Story</a>
+                <a href="#contact" class="block py-2 hover:text-amber-600">Contact</a>
+            </div>
+
+            <script>
+                // Mobile menu toggle
+                document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                    const menu = document.getElementById('mobileMenu');
+                    menu.classList.toggle('hidden');
+                });
+            </script>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-amber-50 py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="handwritten text-4xl md:text-5xl text-amber-700 mb-4">Fresh from our oven</h2>
+                <h3 class="text-2xl md:text-3xl font-semibold mb-6">Artisan Bakery & Café</h3>
+                <p class="text-lg mb-8">Handcrafted with love using traditional methods and the finest ingredients since 1985.</p>
+                <a href="#products" class="order-btn inline-block px-8 py-3 rounded-full text-white font-semibold">Browse Our Bakes</a>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://images.unsplash.com/photo-1608190003443-86a8a7e80d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                     alt="Assorted artisan breads" 
+                     class="rounded-lg shadow-lg w-full max-w-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Specials -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="handwritten text-center text-4xl text-amber-700 mb-2">This Week's Specials</h2>
+            <p class="text-center mb-8">Available until Sunday</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-amber-50 rounded-xl p-6 shadow-md flex flex-col items-center">
+                    <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                         alt="Cinnamon rolls" 
+                         class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Cinnamon Swirl Rolls</h3>
+                    <p class="text-center mb-4">Our famous cinnamon rolls with cream cheese frosting. Limited batch!</p>
+                    <div class="flex justify-between items-center w-full mt-auto">
+                        <span class="font-bold text-amber-700">$4.50 each</span>
+                        <button class="order-btn px-4 py-2 rounded-full text-white text-sm">Order Now</button>
+                    </div>
+                </div>
+                
+                <div class="bg-amber-50 rounded-xl p-6 shadow-md flex flex-col items-center">
+                    <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                         alt="Sourdough bread" 
+                         class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Honey Oat Sourdough</h3>
+                    <p class="text-center mb-4">Naturally leavened with local honey and rolled oats. Perfect for toast!</p>
+                    <div class="flex justify-between items-center w-full mt-auto">
+                        <span class="font-bold text-amber-700">$8.00/loaf</span>
+                        <button class="order-btn px-4 py-2 rounded-full text-white text-sm">Order Now</button>
+                    </div>
+                </div>
+                
+                <div class="bg-amber-50 rounded-xl p-6 shadow-md flex flex-col items-center">
+                    <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                         alt="Berry tart" 
+                         class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Mixed Berry Tart</h3>
+                    <p class="text-center mb-4">Seasonal berries on a buttery crust with vanilla pastry cream.</p>
+                    <div class="flex justify-between items-center w-full mt-auto">
+                        <span class="font-bold text-amber-700">$6.50 each</span>
+                        <button class="order-btn px-4 py-2 rounded-full text-white text-sm">Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Selection -->
+    <section id="products" class="py-16 bg-amber-50">
+        <div class="container mx-auto px-4">
+            <h2 class="handwritten text-center text-4xl text-amber-700 mb-2">Our Daily Bakes</h2>
+            <p class="text-center mb-8">Available for pre-order or in-store pickup</p>
+            
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <button class="filter-btn px-4 py-2 rounded-full bg-white border border-amber-200 active" data-category="all">All</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-white border border-amber-200" data-category="bread">Breads</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-white border border-amber-200" data-category="pastry">Pastries</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-white border border-amber-200" data-category="cake">Cakes</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-white border border-amber-200" data-category="cookie">Cookies</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-white border border-amber-200" data-category="gluten-free">Gluten-Free</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-white border border-amber-200" data-category="seasonal">Seasonal</button>
+            </div>
+
+            <script>
+                // Filter functionality
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        const category = this.dataset.category;
+                        document.querySelectorAll('.product-card').forEach(card => {
+                            if (category === 'all' || card.dataset.category === category) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            </script>
+            
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-xl p-6 shadow-md transition-all duration-300" data-category="bread">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                         alt="Baguette" 
+                         class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Traditional Baguette</h3>
+                    <p class="text-sm mb-4">Crusty exterior with a light, airy interior. Perfect with butter or for sandwiches.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-amber-700">$3.50 each</span>
+                        <div class="flex items-center">
+                            <button class="quantity-btn w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">-</button>
+                            <span class="mx-3 w-8 text-center">0</span>
+                            <button class="quantity-btn w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-xl p-6 shadow-md transition-all duration-300" data-category="pastry">
+                    <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                         alt="Croissant" 
+                         class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Butter Croissant</h3>
+                    <p class="text-sm mb-4">Flaky, buttery layers with a delicate crisp exterior. Made with French butter.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-amber-700">$3.75 each</span>
+                        <div class="flex items-center">
+                            <button class="quantity-btn w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">-</button>
+                            <span class="mx-3 w-8 text-center">0</span>
+                            <button class="quantity-btn w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-xl p-6 shadow-md transition-all duration-300" data-category="cake">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                         alt="Chocolate cake" 
+                         class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Chocolate Fudge Cake</h3>
+                    <p class="text-sm mb-4">Rich, moist chocolate cake with layers of chocolate ganache. Serves 8-10.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-amber-700">$28.00</span>
+                        <div class="flex items-center">
+                            <button class="quantity-btn w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">-</button>
+                            <span class="mx-3 w-8 text-center">0</span>
+                            <button class="quantity-btn w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-xl p-6 shadow-md transition-all duration-300" data-category="bread">
+                    <img src="https://images.unsplash.com/photo-1546549032-9571cd6b27df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                         alt="Country Sourdough bread" 
+                         class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Country Sourdough</h3>
+                    <p class="text-sm mb-4">Our signature sourdough with a tangy flavor and perfect crust. 1.5lb loaf.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-amber-700">$7.50</span>
+                        <div class="flex items-center">
+                            <button class="quantity-btn w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">-</button>
+                            <span class="mx-3 w-8 text-center">0</span>
+                            <button class="quantity-btn w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-xl p-6 shadow-md transition-all duration-300" data-category="pastry">
+                    <img src="https://images.unsplash.com/photo-1559620192-032c4bc4674e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                         alt="Almond croissant" 
+                         class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Almond Croissant</h3>
+                    <p class="text-sm mb-4">Buttery croissant filled with almond cream and topped with sliced almonds.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-amber-700">$4.25 each</span>
+                        <div class="flex items-center">
+                            <button class="quantity-btn w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">-</button>
+                            <span class="mx-3 w-8 text-center">0</span>
+                            <button class="quantity-btn w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-xl p-6 shadow-md transition-all duration-300" data-category="cookie">
+                    <img src="https://images.unsplash.com/photo-1587241321921-91a834d6d191?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                         alt="Cookies" 
+                         class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Assorted Cookies</h3>
+                    <p class="text-sm mb-4">Box of 12 mixed cookies (chocolate chip, oatmeal raisin, shortbread).</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-amber-700">$15.00/box</span>
+                        <div class="flex items-center">
+                            <button class="quantity-btn w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">-</button>
+                            <span class="mx-3 w-8 text-center">0</span>
+                            <button class="quantity-btn w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <img src="https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Baker kneading dough" 
+                         class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="handwritten text-4xl text-amber-700 mb-4">Our Story</h2>
+                    <p class="mb-4">Founded in 1985 by master baker Jacques Laurent, Golden Crust began as a small neighborhood bakery with a simple mission: to create exceptional bread using time-honored techniques.</p>
+                    <p class="mb-4">Today, under the leadership of Jacques' daughter Marie, we continue this tradition while expanding our offerings to include a full range of artisan breads, pastries, and custom cakes.</p>
+                    <p class="mb-6">We source our ingredients locally whenever possible, including flour from regional mills, dairy from family farms, and seasonal fruits from nearby orchards.</p>
+                    <div class="flex items-center">
+                        <div class="mr-4">
+                            <i class="fas fa-award text-3xl text-amber-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Award Winning</h4>
+                            <p class="text-sm">Best Artisan Bakery 2022 - Food & Wine Magazine</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-amber-50">
+        <div class="container mx-auto px-4">
+            <h2 class="handwritten text-center text-4xl text-amber-700 mb-2">Visit Us</h2>
+            <p class="text-center mb-8">We'd love to hear from you</p>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2 bg-white p-8 rounded-xl shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-amber-600"></i>
+                            <div>
+                                <h4 class="font-medium">Address</h4>
+                                <p>123 Baker Street<br>Flourville, CA 90210</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-clock mt-1 mr-3 text-amber-600"></i>
+                            <div>
+                                <h4 class="font-medium">Hours</h4>
+                                <p>Monday-Friday: 7am - 6pm<br>Saturday: 8am - 5pm<br>Sunday: 8am - 3pm</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-amber-600"></i>
+                            <div>
+                                <h4 class="font-medium">Phone</h4>
+                                <p>(555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-amber-600"></i>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <p>hello@goldencrust.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-700 hover:bg-amber-200">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-700 hover:bg-amber-200">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-700 hover:bg-amber-200">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 bg-white p-8 rounded-xl shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Send Us a Message</h3>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block mb-1">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-amber-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-300">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block mb-1">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-amber-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-300">
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="block mb-1">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-amber-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-300">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block mb-1">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-amber-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-300"></textarea>
+                        </div>
+                        <button type="submit" class="order-btn w-full py-3 rounded-full text-white font-semibold">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Summary Bar -->
+    <div id="orderSummary" class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 py-3 px-6 hidden">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="mb-2 md:mb-0">
+                <span class="font-semibold"><span id="totalItems">0</span> items selected</span>
+                <span class="mx-2">•</span>
+                <span class="font-bold text-amber-700">$<span id="totalPrice">0.00</span></span>
+            </div>
+            <div class="flex space-x-3">
+                <button id="clearCartBtn" class="px-4 py-2 rounded-full border border-amber-200 text-amber-700 hover:bg-amber-50">
+                    Clear All
+                </button>
+                <button id="checkoutBtn" class="order-btn px-6 py-2 rounded-full text-white font-semibold hover:bg-amber-600">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced cart functionality
+        let cart = {};
+        const productPrices = {
+            "Traditional Baguette": 3.50,
+            "Butter Croissant": 3.75,
+            "Chocolate Fudge Cake": 28.00,
+            "Country Sourdough": 7.50,
+            "Almond Croissant": 4.25,
+            "Assorted Cookies": 15.00,
+            "Cinnamon Swirl Rolls": 4.50,
+            "Honey Oat Sourdough": 8.00,
+            "Mixed Berry Tart": 6.50
+        };
+
+        const updateCartDisplay = () => {
+            const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+            const totalPrice = Object.entries(cart).reduce((sum, [name, qty]) => {
+                return sum + (productPrices[name] * qty);
+            }, 0).toFixed(2);
+            
+            const orderSummary = document.getElementById('orderSummary');
+            if (totalItems > 0) {
+                orderSummary.classList.remove('hidden');
+                document.getElementById('totalItems').textContent = totalItems;
+                document.getElementById('totalPrice').textContent = totalPrice;
+            } else {
+                orderSummary.classList.add('hidden');
+            }
+        };
+
+        // Handle quantity changes
+        document.querySelectorAll('.quantity-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const productName = productCard.querySelector('h3').textContent;
+                const isIncrement = this.textContent === '+';
+                
+                cart[productName] = cart[productName] || 0;
+                if (isIncrement) {
+                    cart[productName]++;
+                } else if (cart[productName] > 0) {
+                    cart[productName]--;
+                }
+                
+                const quantityDisplay = productCard.querySelector('.mx-3');
+                quantityDisplay.textContent = cart[productName];
+                updateCartDisplay();
+            });
+        });
+
+        // Handle clear cart button
+        document.getElementById('clearCartBtn').addEventListener('click', function() {
+            // Reset all quantities to 0
+            document.querySelectorAll('.product-card').forEach(card => {
+                const productName = card.querySelector('h3').textContent;
+                cart[productName] = 0;
+                card.querySelector('.mx-3').textContent = '0';
+            });
+            updateCartDisplay();
+        });
+
+        // Handle checkout button
+        document.getElementById('checkoutBtn').addEventListener('click', function() {
+            if (Object.values(cart).reduce((sum, qty) => sum + qty, 0) === 0) {
+                alert('Please add items to your order first');
+                return;
+            }
+            
+            // In a real implementation, this would redirect to checkout
+            let orderSummary = "Your Order:\n";
+            Object.entries(cart).forEach(([name, qty]) => {
+                if (qty > 0) {
+                    orderSummary += `- ${name} (${qty} x $${productPrices[name].toFixed(2)})\n`;
+                }
+            });
+            orderSummary += `\nTotal: $${document.getElementById('totalPrice').textContent}`;
+            
+            alert(orderSummary);
+        });
+
+        // Make all "Order Now" buttons in featured section work
+        document.querySelectorAll('.featured-products .order-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const productCard = this.closest('.bg-amber-50');
+                const productName = productCard.querySelector('h3').textContent;
+                
+                cart[productName] = (cart[productName] || 0) + 1;
+                
+                // Find corresponding product in main section and update its quantity
+                let found = false;
+                document.querySelectorAll('.product-card').forEach(card => {
+                    if (card.querySelector('h3').textContent === productName) {
+                        card.querySelector('.mx-3').textContent = cart[productName];
+                        found = true;
+                    }
+                });
+                
+                if (!found) {
+                    // If product not in main section, show quantity in featured section
+                    const qtyDisplay = document.createElement('span');
+                    qtyDisplay.className = 'ml-2 font-medium';
+                    qtyDisplay.textContent = `(${cart[productName]})`;
+                    this.parentNode.insertBefore(qtyDisplay, this.nextSibling);
+                }
+                
+                updateCartDisplay();
+            });
+        });
+    </script>
+</html>
